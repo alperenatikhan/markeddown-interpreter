@@ -6,19 +6,25 @@ import marked from "marked"
 
 class App extends React.Component{
   constructor(props){
-    super();
+    super(props);
     this.state= {
       input:'',
-      markdown:''
+      markdown:`<h1 id="marked-in-nodejsnnrendered-by-marked">Marked in Node.js\n\nRendered by <strong>marked</strong>.</h1>`
     };
     this.handleChange = this.handleChange.bind(this);
   
   }
 handleChange(event){
-  this.setState({input: event.target.value})
-  const marked = require("marked");
-  const html = marked(this.state.input);
-  this.setState({markdown: html });
+   const marked = require("marked");
+  if(event.target.value){
+    
+  this.setState({input: event.target.value});
+  this.setState({markdown: marked(this.state.input)});
+
+  }else{
+    this.setState({markdown: '<h1 id="marked-in-nodejsnnrendered-by-marked">Marked in Node.js\n\nRendered by <strong>marked</strong>.</h1>'})
+  }
+
 } 
 
   render(){
