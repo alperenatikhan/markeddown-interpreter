@@ -1,0 +1,5 @@
+const myFunction= () => {
+const firstInput = document.getElementById('editor').value;
+const markDown= marked(firstInput);
+document.getElementById('preview').innerText = markDown;
+ };
